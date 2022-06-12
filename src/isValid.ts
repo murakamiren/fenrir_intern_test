@@ -17,21 +17,21 @@ export const isValid = (s: string): boolean => {
 			}
 
 			if (sArr[i] === ")") {
-				let x = stack[stack.length - 1];
+				let lastStack = stack[stack.length - 1];
 				stack.pop();
-				if (x === "{" || x === "[") {
+				if (lastStack === "{" || lastStack === "[") {
 					return false;
 				}
 			} else if (sArr[i] === "}") {
-				let x = stack[stack.length - 1];
+				let lastStack = stack[stack.length - 1];
 				stack.pop();
-				if (x === "(" || x === "[") {
+				if (lastStack === "(" || lastStack === "[") {
 					return false;
 				}
 			} else if (sArr[i] === "]") {
-				let x = stack[stack.length - 1];
+				let lastStack = stack[stack.length - 1];
 				stack.pop();
-				if (x === "(" || x === "{") {
+				if (lastStack === "(" || lastStack === "{") {
 					return false;
 				}
 			}
