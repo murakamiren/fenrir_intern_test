@@ -5,14 +5,11 @@ const stackCheck_1 = require("./stackCheck");
 const isValid = (s) => {
     if (s !== "") {
         const sArr = s.split("");
-        // console.log(sArr);
         let stack = [];
         for (let i = 0; i < sArr.length; i++) {
-            //開き括弧だけstackにpush
             if ((0, stackCheck_1.stackCheck)(sArr[i])) {
                 stack.push(sArr[i]);
             }
-            // console.log(stack);
             if (stack.length === 0) {
                 return false;
             }
