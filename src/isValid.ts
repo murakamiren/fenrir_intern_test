@@ -6,14 +6,28 @@ export const isValid = (s: string): boolean => {
 	for (let i = 0; i < sArr.length; i++) {
 		const currS = sArr[i];
 		const reverseCurrS = reverseBracket(currS);
-		if (reverseCurrS !== "pass") {
-			const firstIndex = sArr.indexOf(currS);
-			const lastIndex = sArr.lastIndexOf(reverseCurrS);
+		const closeIndex = sArr.indexOf(reverseCurrS);
+		if (reverseCurrS === "pass" || i + 1 === closeIndex) {
+			continue;
+		}
+		// console.log("closeIndex: " + closeIndex + currS + reverseCurrS + "i: " + i);
 
-			const betweenNumber = lastIndex - firstIndex;
+		if (closeIndex === -1) {
+			return false;
+		}
+		for (let n = i; n < closeIndex; n++) {
+			if (i !== n) {
+				const searchS = sArr[n];
+				const reverseSearchS = reverseBracket(searchS);
+				if (reverseSearchS === "pass") {
+					continue;
+				}
+				const searchCloseIndex = sArr.indexOf(reverseSearchS);
+				// console.log("searchCloseIndex: " + searchCloseIndex + searchS + "n: " + n);
 
-			if (betweenNumber % 2 === 0) {
-				return false;
+				if (searchCloseIndex === -1 || searchCloseIndex > closeIndex) {
+					return false;
+				}
 			}
 		}
 	}
