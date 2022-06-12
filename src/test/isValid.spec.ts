@@ -31,4 +31,9 @@ describe("isValid", () => {
 		const result = isValid("{([})]'");
 		expect(result).toBe(false);
 	});
+
+	it("arg '({()})' should be return true", () => {
+		const result = isValid("{([})]'");
+		expect(result).toBe(true);
+	});
 });

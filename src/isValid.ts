@@ -1,35 +1,42 @@
-import { reverseBracket } from "./reverseBracket";
+import { stackCheck } from "./stackCheck";
 
 export const isValid = (s: string): boolean => {
-	const sArr: string[] = s.split("");
-	// console.log(sArr);
-	for (let i = 0; i < sArr.length; i++) {
-		const currS = sArr[i];
-		const reverseCurrS = reverseBracket(currS);
-		const closeIndex = sArr.indexOf(reverseCurrS);
-		if (reverseCurrS === "pass" || i + 1 === closeIndex) {
-			continue;
-		}
-		// console.log("closeIndex: " + closeIndex + currS + reverseCurrS + "i: " + i);
+	if (s !== "") {
+		const sArr: string[] = s.split("");
+		console.log(sArr);
+		let stack: string[] = [];
+		for (let i = 0; i < sArr.length; i++) {
+			if (stackCheck(sArr[i])) {
+				stack.push(sArr[i]);
+			}
+			console.log(stack);
 
-		if (closeIndex === -1) {
-			return false;
-		}
-		for (let n = i; n < closeIndex; n++) {
-			if (i !== n) {
-				const searchS = sArr[n];
-				const reverseSearchS = reverseBracket(searchS);
-				if (reverseSearchS === "pass") {
-					continue;
+			if (stack.length === 0) {
+				return false;
+			}
+
+			if (sArr[i] === ")") {
+				let x = stack[stack.length - 1];
+				stack.pop();
+				if (x === "{" || x === "[") {
+					return false;
 				}
-				const searchCloseIndex = sArr.indexOf(reverseSearchS);
-				// console.log("searchCloseIndex: " + searchCloseIndex + searchS + "n: " + n);
-
-				if (searchCloseIndex === -1 || searchCloseIndex > closeIndex) {
+			} else if (sArr[i] === "}") {
+				let x = stack[stack.length - 1];
+				stack.pop();
+				if (x === "(" || x === "[") {
+					return false;
+				}
+			} else if (sArr[i] === "]") {
+				let x = stack[stack.length - 1];
+				stack.pop();
+				if (x === "(" || x === "{") {
 					return false;
 				}
 			}
 		}
+	} else {
+		return false;
 	}
 	return true;
 };
