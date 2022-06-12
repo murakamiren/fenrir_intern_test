@@ -33,7 +33,7 @@ describe("isValid", () => {
 	});
 
 	it("arg '({()})' should be return true", () => {
-		const result = isValid("{([})]'");
+		const result = isValid("({()})");
 		expect(result).toBe(true);
 	});
 });
