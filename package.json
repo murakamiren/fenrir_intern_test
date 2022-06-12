@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "yarn ts-node src/index.ts",
 		"test": "vitest",
-		"build": "tsc"
+		"build": "rimraf dist & tsc"
 	},
 	"dependencies": {
 		"ts-node": "^10.8.1",
