@@ -2,7 +2,7 @@ import { reverseBracket } from "./reverseBracket";
 
 export const isValid = (s: string): boolean => {
 	const sArr: string[] = s.split("");
-	console.log(sArr);
+	// console.log(sArr);
 	for (let i = 0; i < sArr.length; i++) {
 		const currS = sArr[i];
 		const reverseCurrS = reverseBracket(currS);
