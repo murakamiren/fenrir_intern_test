@@ -4,7 +4,8 @@
 
 ## コマンド
 
+```
 yarn start: src/index.ts を実行
-<br>
+yarn test: testファイルを実行
 yarn build: dist ディレクトリに build したファイルを生成
-<br>
+```
