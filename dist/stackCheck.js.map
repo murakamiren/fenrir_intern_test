@@ -1,0 +1,1 @@
+{"version":3,"file":"stackCheck.js","sourceRoot":"","sources":["../src/stackCheck.ts"],"names":[],"mappings":";;;AAAO,MAAM,UAAU,GAAG,CAAC,CAAS,EAAW,EAAE;IAChD,IAAI,CAAC,KAAK,GAAG,IAAI,CAAC,KAAK,GAAG,IAAI,CAAC,KAAK,GAAG,EAAE;QACxC,OAAO,IAAI,CAAC;KACZ;SAAM;QACN,OAAO,KAAK,CAAC;KACb;AACF,CAAC,CAAC;AANW,QAAA,UAAU,cAMrB"}

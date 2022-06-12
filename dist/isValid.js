@@ -1,21 +1,46 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isValid = void 0;
-const reverseBracket_1 = require("./reverseBracket");
+const stackCheck_1 = require("./stackCheck");
 const isValid = (s) => {
-    const sArr = s.split("");
-    // console.log(sArr);
-    for (let i = 0; i < sArr.length; i++) {
-        const currS = sArr[i];
-        const reverseCurrS = (0, reverseBracket_1.reverseBracket)(currS);
-        if (reverseCurrS !== "pass") {
-            const firstIndex = sArr.indexOf(currS);
-            const lastIndex = sArr.lastIndexOf(reverseCurrS);
-            const betweenNumber = lastIndex - firstIndex;
-            if (betweenNumber % 2 === 0) {
+    if (s !== "") {
+        const sArr = s.split("");
+        // console.log(sArr);
+        let stack = [];
+        for (let i = 0; i < sArr.length; i++) {
+            //開き括弧だけstackにpush
+            if ((0, stackCheck_1.stackCheck)(sArr[i])) {
+                stack.push(sArr[i]);
+            }
+            // console.log(stack);
+            if (stack.length === 0) {
                 return false;
             }
+            if (sArr[i] === ")") {
+                let x = stack[stack.length - 1];
+                stack.pop();
+                if (x === "{" || x === "[") {
+                    return false;
+                }
+            }
+            else if (sArr[i] === "}") {
+                let x = stack[stack.length - 1];
+                stack.pop();
+                if (x === "(" || x === "[") {
+                    return false;
+                }
+            }
+            else if (sArr[i] === "]") {
+                let x = stack[stack.length - 1];
+                stack.pop();
+                if (x === "(" || x === "{") {
+                    return false;
+                }
+            }
         }
+    }
+    else {
+        return false;
     }
     return true;
 };

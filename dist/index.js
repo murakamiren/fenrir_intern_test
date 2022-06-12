@@ -7,4 +7,6 @@ s = "([]){}";
 console.log((0, isValid_1.isValid)(s)); // should be true
 s = "({)}";
 console.log((0, isValid_1.isValid)(s)); // should be false
+s = "({()})";
+console.log((0, isValid_1.isValid)(s)); // should be true
 //# sourceMappingURL=index.js.map
