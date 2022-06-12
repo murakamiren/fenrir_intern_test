@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { isValid } from "../isValid";
 
 describe("isValid", () => {
-	it("arg 'test' should be return true", () => {
-		const result = isValid("test");
+	it("arg '(){}' should be return true", () => {
+		const result = isValid("(){}");
 		expect(result).toBe(true);
 	});
 });
