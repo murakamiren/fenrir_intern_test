@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "yarn ts-node src/index.ts",
+		"test": "vitest",
 		"build": "tsc"
 	},
 	"dependencies": {
